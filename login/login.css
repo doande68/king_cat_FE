@@ -1,3 +1,4 @@
+
 body{
     margin: 0;
     padding: 0;
@@ -67,22 +68,22 @@ button{
 button:hover{
     background: #6d44b8;
 }
-.login{
+#loginForm{
     height: 460px;
     background: #eee;
     border-radius: 60% / 10%;
     transform: translateY(-180px);
     transition: .8s ease-in-out;
 }
-.login label{
+#loginForm label{
     color: #573b8a;
     transform: scale(.6);
 }
 
-#chk:checked ~ .login{
+#chk:checked ~ #loginForm{
     transform: translateY(-500px);
 }
-#chk:checked ~ .login label{
+#chk:checked ~ #loginForm label{
     transform: scale(1);
 }
 #chk:checked ~ .signup label{
