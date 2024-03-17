@@ -1,4 +1,4 @@
-/* Reset CSS */
+/* CSS styles */
 * {
     margin: 0;
     padding: 0;
@@ -28,49 +28,6 @@ header h1 {
     margin-bottom: 10px;
 }
 
-nav ul {
-    list-style-type: none;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    color: #f2f2f2;
-}
-
-#hero {
-    background-image: url('https://via.placeholder.com/1500x500');
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-align: center;
-    padding: 100px 0;
-}
-
-#hero h2 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
-/* Thêm mã CSS mới */
 nav {
     display: flex;
     align-items: center;
@@ -96,14 +53,81 @@ nav ul li a:hover {
     color: #f2f2f2;
 }
 
+.shop-btn i {
+    margin-right: 5px;
+}
+
+.shop-btn:hover {
+    background-color: #45a049;
+}
+
 .login-btn {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.login-btn i {
+    margin-right: 5px;
 }
 
 .login-btn:hover {
     background-color: #45a049;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #f2f2f2;
+}
+
+.pet-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

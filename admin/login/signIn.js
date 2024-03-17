@@ -8,12 +8,12 @@ function signIn() {
 	let newUser = {
 		name: name,
 		email: email,
-		role: 1,
+		role: 2,
 		password: password,
 	}
 
 	axios.post('http://localhost:8080/user/add', newUser).then(function (response) {
-		window.location.href = "../home/home.html";
+		window.location.href = "../../home/home.html";
 	}).catch(function (error) {
 		console.error(error);
 
