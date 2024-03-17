@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search User</title>
+    <link rel="stylesheet" href="searchUser.css">
+</head>
+<body>
+<div class="container">
+    <h1>Search User</h1>
+    <a href="../home/home.html" class="create-icon">
+        <img src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/icons/person-plus-fill.svg" alt="Add User Icon" width="30" height="30">
+    </a>
+    <form>
+        <label for="search">Search by Name:</label>
+        <input type="text" id="search" name="search" placeholder="Enter name...">
+        <button type="button" onclick="searchByName()">Search</button>
+    </form>
+
+    <div id="searchResults">
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+  function searchByName() {
+    let inSearch = document.getElementById("search").value;
+    axios.get(`http://localhost:8080/user/search?name=${inSearch}`)
+    .then(function (response) {
+      let userList = response.data;
+      let html = '';
+      for (let i = 0; i < userList.length; i++) {
+        html += `
+          <div class="user">
+            <div class="user-info">
+              <div>
+                <strong>Name:</strong> ${userList[i].name} <br>
+                <strong>Email:</strong> ${userList[i].email}
+              </div>
+              <div>
+                <button onclick="editUser(${userList[i].id})">Edit</button>
+                <button onclick="removeUser(${userList[i].id})">Delete</button>
+              </div>
+            </div>
+            <div id="editForm_${userList[i].id}" style="display:none;">
+                <input type="text" id="editName_${userList[i].id}" value="${userList[i].name}" placeholder="Name">
+                <input type="text" id="editEmail_${userList[i].id}" value="${userList[i].email}" placeholder="Email">
+                <input type="password" id="editPassword_${userList[i].id}" placeholder="New Password">
+                <button onclick="saveUser(${userList[i].id})">Save</button>
+            </div>
+          </div>`;
+      }
+      document.getElementById("searchResults").innerHTML = html;
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert("Failed to search for users");
+    });
+  }
+
+  function editUser(userId) {
+    let editForm = document.getElementById(`editForm_${userId}`);
+    editForm.style.display = "block";
+  }
+
+  function saveUser(userId) {
+    let newName = document.getElementById(`editName_${userId}`).value;
+    let newEmail = document.getElementById(`editEmail_${userId}`).value;
+    let newPassword = document.getElementById(`editPassword_${userId}`).value;
+
+    let editedUser = {
+      name: newName,
+      email: newEmail,
+      password: newPassword
+    };
+
+    axios.put(`http://localhost:8080/user/${userId}`, editedUser)
+    .then(function (response) {
+      alert("User information updated successfully");
+      searchByName();
+    })
+    .catch(function (error) {
+      console.log(error);
+      alert("Failed to update user information");
+    });
+  }
+
+  function removeUser(userId) {
+    let isConfirm = confirm("Are you sure you want to delete this user?");
+    if (isConfirm) {
+      axios.delete(`http://localhost:8080/user/${userId}`)
+      .then(function (response) {
+        alert("User deleted successfully");
+        searchByName()
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("Failed to delete user");
+      });
+    }
+  }
+</script>
+</body>
+</html>

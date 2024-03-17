@@ -89,3 +89,14 @@ button:hover{
 #chk:checked ~ .signup label{
     transform: scale(.6);
 }
+body {
+    background: linear-gradient(to bottom, #7AB730, #2E8B57, #4CAF50);
+
+}
+.login label {
+    color: #7AB730;
+    transform: scale(.6);
+}
+button{
+    background: #7AB730;
+}

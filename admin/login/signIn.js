@@ -13,7 +13,7 @@ function signIn() {
 	}
 
 	axios.post('http://localhost:8080/user/add', newUser).then(function (response) {
-		window.location.href = "../../home/home.html";
+		window.location.href = "../home/home.html";
 	}).catch(function (error) {
 		console.error(error);
 
