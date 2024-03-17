@@ -81,7 +81,7 @@ button:hover {
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 9;
-    padding: 10px;
+    padding: 15%;
 }
 
 .form-container {
